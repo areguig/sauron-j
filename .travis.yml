@@ -8,7 +8,7 @@ os:
 
 branches:
   only:
-    - master
+    - dev
 
 cache:
   directories:
@@ -17,5 +17,5 @@ cache:
 before_script:
   - git fetch
   - git checkout -b gh-pages
-  - git merge origin/master
+  - git merge origin/dev
   - git rm --cached --ignore-unmatch index.html
