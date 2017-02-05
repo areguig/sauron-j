@@ -1,5 +1,6 @@
  ![Sl](/src/main/resources/static/img/sauron2.png?raw=true "S") 
 
+![Travis CI](https://travis-ci.org/areguig/sauron.svg?branch=dev)
 
 # SAURON 
 
