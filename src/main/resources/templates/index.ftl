@@ -16,7 +16,7 @@
         <div class="container-fluid">
             <div class="navbar-header">
                 <a class="navbar-brand" href="/"  style="padding: 10px 10px !important;">
-                    <img style=" height: 31px;" src="img/sauron.png" alt="S">
+                    <img style=" height: 31px;" src="img/sauron2.png" alt="S">
                 </a>
             </div>
         </div>
@@ -52,7 +52,7 @@
                 </div>
                 <div class="col-sm-7">
                     <ul class="list-inline">
-                        
+
                     </ul>
                 </div>
             </div>
