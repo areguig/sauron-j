@@ -8,7 +8,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
 import io.areguig.sauron.api.component.Component;
@@ -27,10 +26,9 @@ public class IndexEndpoint {
 
         List<Component> components = StreamSupport.stream(componentRepository.findAll()
                 .spliterator(), false).collect(Collectors.toList());
-        model.put("status",components.stream().mapToInt(value -> value.getStatus()).sum());
-        model.put("components",components);
+        model.put("status", components.stream().mapToInt(value -> value.getStatus()).sum());
+        model.put("components", components);
         model.put("time", new Date());
-        model.put("message", "Hellow");
         return "index";
     }
 }
