@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link  href="img/favicon.ico"  rel="icon" type="image/x-icon">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="css/main.css">
@@ -12,21 +13,20 @@
     <title>Sauron</title>
 </head>
 <body>
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="/"  style="padding: 10px 10px !important;">
-                    <img style=" height: 31px;" src="img/sauron2.png" alt="S">
-                </a>
-            </div>
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">Sauron</a>
         </div>
-    </nav>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="/"> <span class="glyphicon glyphicon-refresh"></span> ${time?datetime}</a></li> </li>
+        </ul>
+    </div>
     <div class='container'>
-        <h2><span class="label label-default">Systems status</span></h2>
-        <div class="alert <#if status !=0>alert-warning <#else> alert-success</#if>" role="alert">
-            <#if status !=0> System outage is running. <#else> All systems are operational.</#if>
+        <h4><span class="label label-default">Systems status</span></h4>
+        <div class="alert <#if systems_status ==2>alert-danger <#elseif  systems_status ==0> alert-success <#else> alert-warning </#if>" role="alert">
+            <#if systems_status gt 0> Systems are experiencing issues. <#else> All systems are operational. </#if>
         </div>
-        <h3><span class="label label-default">Components</span></h3>
+        <h4><span class="label label-default">Components</span></h4>
         <div class="list-group">
             <#list components as component>
                 <div class="list-group-item">
@@ -58,6 +58,5 @@
             </div>
         </div>
     </footer>
-
 </body>
 </html>

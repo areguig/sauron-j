@@ -26,9 +26,11 @@ public class IndexEndpoint {
 
         List<Component> components = StreamSupport.stream(componentRepository.findAll()
                 .spliterator(), false).collect(Collectors.toList());
-        model.put("status", components.stream().mapToInt(value -> value.getStatus()).sum());
+        double systemsStatus = components.stream().mapToInt(value -> value.getStatus()).average().getAsDouble();
+        model.put("systems_status", systemsStatus>1?2:systemsStatus<=0?0:1);
         model.put("components", components);
         model.put("time", new Date());
+        model.put("incidents",null);
         return "index";
     }
 }

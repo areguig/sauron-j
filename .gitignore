@@ -5,6 +5,7 @@
 /sauron_db/
 /out/
 /log/
+*.pid
 
 ### STS ###
 .apt_generated
