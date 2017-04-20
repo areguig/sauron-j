@@ -1,19 +1,15 @@
 package io.areguig.sauron.integration.ui
 
+import io.areguig.sauron.integration.AbstractIntegrationSpec
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.web.client.TestRestTemplate
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
-import org.springframework.test.context.ActiveProfiles
-import spock.lang.Specification
 
 /**
  * Created by areguig on 06/02/2017.
  */
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@ActiveProfiles("h2")
-class IndexControllerSpec extends Specification {
+class IndexControllerSpec extends AbstractIntegrationSpec {
 
     @Autowired
     TestRestTemplate restTemplate

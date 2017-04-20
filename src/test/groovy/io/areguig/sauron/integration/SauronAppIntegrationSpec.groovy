@@ -1,27 +1,20 @@
 package io.areguig.sauron.integration
 
-import io.areguig.sauron.SauronApplication
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.context.ApplicationContext
-import org.springframework.test.context.ActiveProfiles
-import spock.lang.Specification
 
 /**
  * Created by akli on 16/01/2017.
  */
-
-@SpringBootTest(classes = SauronApplication.class,
-        webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@ActiveProfiles("h2")
-class SauronAppIntegrationSpec extends Specification{
+class SauronAppIntegrationSpec extends AbstractIntegrationSpec{
 
     @Autowired
     ApplicationContext context
 
-    def "should boot up without errors"() {
-        expect:
+    def "Spring context should start correctly."() {
+        expect: "the spring context is not null and it contains the application bean "
         context != null
         context.containsBean("sauronApplication")
+
     }
 }

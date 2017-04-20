@@ -8,8 +8,8 @@
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="css/main.css">
-    <!-- Optional theme
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">-->
+    <!-- Optional theme-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <title>Sauron</title>
 </head>
 <body>
@@ -24,7 +24,7 @@
     <div class='container'>
         <h4><span class="label label-default">Systems status</span></h4>
         <div class="alert <#if systems_status ==2>alert-danger <#elseif  systems_status ==0> alert-success <#else> alert-warning </#if>" role="alert">
-            <#if systems_status gt 0> Systems are experiencing issues. <#else> All systems are operational. </#if>
+            <#if systems_status gt 0> Systems are experiencing issues. <#else> All systems operational. </#if>
         </div>
         <h4><span class="label label-default">Components</span></h4>
         <div class="list-group">
@@ -52,7 +52,6 @@
                 </div>
                 <div class="col-sm-7">
                     <ul class="list-inline">
-
                     </ul>
                 </div>
             </div>

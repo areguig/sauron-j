@@ -1,6 +1,11 @@
 package io.areguig.sauron.config;
 
-import org.springframework.beans.factory.annotation.Value;
+import org.jooq.DSLContext;
+import org.jooq.SQLDialect;
+import org.jooq.conf.Settings;
+import org.jooq.conf.StatementType;
+import org.jooq.impl.DefaultConfiguration;
+import org.jooq.impl.DefaultDSLContext;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceBuilder;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -15,15 +20,21 @@ import javax.sql.DataSource;
 @Configuration
 public class SauronConfig {
 
-    @Value("${db.sauron}")
-    private String profile;
+    //@Value("${db.sauron}")
+    //private String profile;
 
 
     @Primary
     @Bean(name = "dataSource", destroyMethod = "close")
     @ConfigurationProperties(prefix = "db.sauron")
-    public DataSource primaryDataSource() {
+    public DataSource getDataSource() {
         return DataSourceBuilder.create().build();
     }
 
+    @Bean
+    public DSLContext getWriteDSLContext() {
+        Settings settings = new Settings().withStatementType(StatementType.STATIC_STATEMENT);
+        return new DefaultDSLContext(new DefaultConfiguration().derive(SQLDialect.POSTGRES)
+                .derive(getDataSource()).derive(settings));
+    }
 }

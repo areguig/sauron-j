@@ -7,11 +7,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
-import io.areguig.sauron.api.component.Component;
-import io.areguig.sauron.api.component.ComponentRepository;
+import io.areguig.sauron.api.Component;
+import io.areguig.sauron.domain.ComponentRepository;
 
 /**
  * Created by akli on 05/02/2017.
@@ -24,8 +22,7 @@ public class IndexEndpoint {
     @GetMapping(value = "/")
     public String index(Map<String, Object> model) {
 
-        List<Component> components = StreamSupport.stream(componentRepository.findAll()
-                .spliterator(), false).collect(Collectors.toList());
+        List<Component> components = componentRepository.findAll();
         double systemsStatus = components.stream().mapToInt(value -> value.getStatus()).average().getAsDouble();
         model.put("systems_status", systemsStatus>1?2:systemsStatus<=0?0:1);
         model.put("components", components);

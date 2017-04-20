@@ -1,20 +1,16 @@
-package io.areguig.sauron.api.incident;
+package io.areguig.sauron.api;
 
 import java.util.Date;
-
-import javax.persistence.Entity;
-import javax.persistence.Id;
 
 import lombok.Data;
 
 /**
  * Created by akli on 05/02/2017.
  */
-@Entity
 @Data
 public class Incident {
 
-    @Id
+
     private long id;
 
     private long id_component;
