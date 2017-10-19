@@ -10,6 +10,10 @@ branches:
   only:
     - dev
 
+sudo: required
+services:
+  - docker
+
 cache:
   directories:
   - $HOME/.gradle
