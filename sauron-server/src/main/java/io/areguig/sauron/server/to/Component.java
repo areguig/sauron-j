@@ -24,7 +24,7 @@ public class Component {
     @URL
     private String link;
 
-    private int status;
+    public int status;
 
     private Date created_at;
 

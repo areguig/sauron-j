@@ -1,5 +1,6 @@
 package io.areguig.sauron.server.endpoint;
 
+import org.jooq.DSLContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -22,18 +23,18 @@ import io.areguig.sauron.server.to.Component;
 public class ComponentEndpoint {
 
     @Autowired
-    private ComponentRepository componentRepository;
+    private DSLContext dsl;
 
     @GetMapping(value = "",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<List<Component>> getComponents(){
-        return new ResponseEntity<>(componentRepository.findAll(),null, HttpStatus.OK);
+        return new ResponseEntity<>(ComponentRepository.findAll().apply(dsl),null, HttpStatus.OK);
     }
 
     @GetMapping(value = "/{id}",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<Component> getComponentById(@PathVariable Integer id){
         Component result =null;
         if(id>0){
-            result=  componentRepository.findById(id);
+            result=  ComponentRepository.findById(id).apply(dsl);
         }
         return new ResponseEntity<>(result,null, result !=null?HttpStatus.OK:HttpStatus.NOT_FOUND);
     }

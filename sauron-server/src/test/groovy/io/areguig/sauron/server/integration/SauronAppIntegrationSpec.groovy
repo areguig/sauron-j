@@ -14,7 +14,7 @@ class SauronAppIntegrationSpec extends AbstractIntegrationSpec{
     def "Spring context should start correctly."() {
         expect: "the spring context is not null and it contains the application bean "
         context != null
-        context.containsBean("sauronApplication")
+        context.containsBean("sauronServerApplication")
 
     }
 }

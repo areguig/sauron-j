@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import java.sql.Timestamp;
 import java.util.List;
+import java.util.function.Function;
 
 import io.areguig.sauron.server.to.Component;
 
@@ -22,31 +23,27 @@ import static org.jooq.impl.SQLDataType.VARCHAR;
  * Created by akli on 04/02/2017.
  */
 
-@Repository
+
 public class ComponentRepository {
 
-    @Autowired
-    private DSLContext dsl;
-
-
-    public List<Component> findAll(){
-        return getComponentSelect()
+    public static Function<DSLContext,List<Component>> findAll(){
+        return  dsl -> getComponentSelect().apply(dsl)
                 .orderBy(field("updated_at",TIMESTAMP).desc())
                 .fetchInto(Component.class);
     }
-    public Component findById(Integer id){
-        return getComponentSelect()
-                .where(field("id",INTEGER).eq(id))
+
+    public static Function<DSLContext,Component> findById(Integer id){
+        return dsl-> getComponentSelect().apply(dsl).where(field("id",INTEGER).eq(id))
                 .fetchOneInto(Component.class);
-    }
+    };
 
     /**
      * PRIVATE STUFF.
      * */
 
 
-    private SelectJoinStep<Record9<Integer, String, String, String, Integer, Timestamp, Timestamp, Timestamp, Boolean>> getComponentSelect() {
-        return dsl.select(
+    private static Function<DSLContext,SelectJoinStep<Record9<Integer, String, String, String, Integer, Timestamp, Timestamp, Timestamp, Boolean>>> getComponentSelect() {
+        return dsl ->dsl.select(
                 field("id", INTEGER),
                 field("name", VARCHAR),
                 field("description", VARCHAR),
