@@ -2,10 +2,10 @@
 /build/
 !gradle/wrapper/gradle-wrapper.jar
 
-/sauron_db/
-/out/
-/log/
-/logs/
+sauron_db
+out
+log
+logs
 *.pid
 
 ### STS ###
